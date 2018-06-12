@@ -28,6 +28,9 @@ app.get('/sandbox', (req, res) => {
     res.render('sandbox', {friends, title: 'Sandbox'});
 });
 
+app.get('/hello', (req, res) => {
+    res.render('hello', {title: 'Hello'});
+});
 
 // Listen to port 3000
 app.listen(3000, () => {
