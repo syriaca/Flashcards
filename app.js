@@ -54,6 +54,14 @@ app.post('/hello', (req, res) => {
     res.redirect('/');
 });
 
+app.post('/goodbye', (req, res) => {
+    const name = req.cookies.username;
+    if(name) {
+        res.clearCookie('username');
+        res.redirect('/hello');
+    }
+});
+
 // Listen to port 3000
 app.listen(3000, () => {
     console.log('the application is running now on localhost:3000');
