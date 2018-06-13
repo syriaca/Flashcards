@@ -29,6 +29,12 @@ app.get('/sandbox', (req, res) => {
 });
 
 app.get('/hello', (req, res) => {
+    console.dir(req);
+    res.render('hello', {title: 'Hello'});
+});
+
+app.post('/hello', (req, res) => {
+    console.dir(req);
     res.render('hello', {title: 'Hello'});
 });
 

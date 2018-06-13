@@ -1,14 +1,13 @@
 extends layout.pug
 
 block content
-    section#content
-        table
-            thead
+    table
+        thead
+            tr
+                th Firstname
+                th Lastname
+        tbody 
+            each val in friends
                 tr
-                    th Firstname
-                    th Lastname
-            tbody 
-                each val in friends
-                    tr
-                        td= val[0]
-                        td= val[1]
+                    td= val[0]
+                    td= val[1]
