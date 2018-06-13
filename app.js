@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 // Create exrpess server (add it to a const)
 const app = express();
@@ -14,6 +15,7 @@ friends =  [
 
 // Set view renderer engine
 app.set('view engine', 'pug');
+app.use(bodyParser.urlencoded({extended: false}));
 
 // Create routes
 app.get('/', (req, res) => {
@@ -29,12 +31,11 @@ app.get('/sandbox', (req, res) => {
 });
 
 app.get('/hello', (req, res) => {
-    console.dir(req);
     res.render('hello', {title: 'Hello'});
 });
 
 app.post('/hello', (req, res) => {
-    console.dir(req);
+    console.dir(req.body);
     res.render('hello', {title: 'Hello'});
 });
 
