@@ -35,8 +35,7 @@ app.get('/hello', (req, res) => {
 });
 
 app.post('/hello', (req, res) => {
-    console.dir(req.body);
-    res.render('hello', {title: 'Hello'});
+    res.render('hello', {name: req.body.username});
 });
 
 // Listen to port 3000
