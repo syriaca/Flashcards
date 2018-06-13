@@ -24,7 +24,12 @@ app.use(cookieParser());
 
 // Create routes
 app.get('/', (req, res) => {
-    res.render('index', {title: 'Flash Cards Index'});
+    const name = req.cookies.username;
+    if(name)  {
+        res.render('index', {title: 'Flash Cards Index', name});
+    } else {
+        res.redirect('/hello');
+    }
 });
 
 app.get('/card', (req, res) => {
@@ -36,12 +41,17 @@ app.get('/sandbox', (req, res) => {
 });
 
 app.get('/hello', (req, res) => {
-    res.render('hello', {title: 'Hello'});
+    const name = req.cookies.username;
+    if(name) {
+        res.redirect('/');
+    } else {
+        res.render('hello', {title: 'Hello'});
+    }
 });
 
 app.post('/hello', (req, res) => {
-    res.cookie('name', req.body.username)
-    res.render('hello', {name: req.body.username});
+    res.cookie('username', req.body.username);
+    res.redirect('/');
 });
 
 // Listen to port 3000
