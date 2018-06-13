@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+
 
 // Create exrpess server (add it to a const)
 const app = express();
@@ -15,7 +17,10 @@ friends =  [
 
 // Set view renderer engine
 app.set('view engine', 'pug');
+// Initialize usage of body-parser module
 app.use(bodyParser.urlencoded({extended: false}));
+// Initialize usage of cookie-parser module
+app.use(cookieParser());
 
 // Create routes
 app.get('/', (req, res) => {
@@ -35,6 +40,7 @@ app.get('/hello', (req, res) => {
 });
 
 app.post('/hello', (req, res) => {
+    res.cookie('name', req.body.username)
     res.render('hello', {name: req.body.username});
 });
 
