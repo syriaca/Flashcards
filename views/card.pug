@@ -2,6 +2,7 @@ extends layout.pug
 
 block content
     h2= text
-    if hint
+    a(href=`${id}?side=${sideToShow}`) #{sideToShow}
+    if hint 
         p
             i Hint: #{hint}
