@@ -4,6 +4,9 @@ html(lang='en')
         title #{title}
     body
         include includes/header.pug
-        section#content
-            block content
+        if name
+            h2 Welcome, #{name} !
+            form(action='/goodbye', method='post')
+                button(type='submit') goodbye
+        block content
         include includes/footer.pug
